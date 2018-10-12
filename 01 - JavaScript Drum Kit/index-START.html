@@ -58,9 +58,32 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  // const keys = document.querySelectorAll('.key');
 
+  function playSound(keyCode) {
+    const sound = document.querySelector(`audio[data-key="${keyCode}"]`);
+    sound.play();
+  }
+
+  // function toggleKey(keyCode) {
+  //   const key = document.querySelector(`div[data-key="${keyCode}"]`);
+  //   key.classList.toggle("playing");
+  // }
+
+  function play(e) {
+    playSound(e.keyCode);
+    // toggleKey(e.keyCode);
+  }
+
+  document.addEventListener('keydown', play);
 </script>
 
 
 </body>
 </html>
+
+<!--
+Listen to a keystroke
+for each sound, it the data key matches the key, play sound
+
+ -->

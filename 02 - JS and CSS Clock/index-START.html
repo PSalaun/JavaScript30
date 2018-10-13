@@ -68,7 +68,6 @@
   </style>
 
   <script>
-    const hands = document.querySelectorAll('.hand');
     const hourHand = document.querySelector('.hour-hand');
     const minuteHand = document.querySelector('.min-hand');
     const secondHand = document.querySelector('.second-hand');
@@ -77,19 +76,19 @@
       hand.style.transform = `rotate(${degrees}deg)`;
     }
 
-    function setHandsPos() {
+    function setHandsPosition() {
       const now = new Date();
       const currentHour = now.getHours() - 12;
-      const hourHandPos = (currentHour * 360 / 12) + 90;
-      const minHandPos = (now.getMinutes() * 360 / 60) + 90;
-      const secHandPos = (now.getSeconds() * 360 / 60) + 90;
+      const hourHandDegrees = (currentHour * 360 / 12) + (now.getMinutes() * 0.5 ) + 90;
+      const minHandDegrees = (now.getMinutes() * 360 / 60) + (now.getSeconds() * 0.1) + 90;
+      const secHandDegrees = (now.getSeconds() * 360 / 60) + 90;
 
-      rotate(hourHand, hourHandPos);
-      rotate(minuteHand, minHandPos);
-      rotate(secondHand, secHandPos);
+      rotate(hourHand, hourHandDegrees);
+      rotate(minuteHand, minHandDegrees);
+      rotate(secondHand, secHandDegrees);
     }
 
-    setInterval(setHandsPos, 1000);
+    setInterval(setHandsPosition, 1000);
   </script>
 </body>
 </html>
